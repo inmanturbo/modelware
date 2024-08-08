@@ -2,9 +2,9 @@
 
 namespace Inmanturbo\Modelware;
 
+use Inmanturbo\Modelware\Commands\ModelwareCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Inmanturbo\Modelware\Commands\ModelwareCommand;
 
 class ModelwareServiceProvider extends PackageServiceProvider
 {

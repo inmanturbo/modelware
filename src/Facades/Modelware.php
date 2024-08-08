@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static void add(string $event, array $pipes, string $prefix = 'modelware')
- * 
+ *
  * @see \Inmanturbo\Modelware\Modelware
  */
 class Modelware extends Facade

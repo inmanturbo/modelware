@@ -5,8 +5,8 @@ namespace Inmanturbo\Modelware;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Pipeline;
 
-class Modelware {
-
+class Modelware
+{
     public function add(string $event, array $pipes, string $prefix = 'modelware'): void
     {
         app()->bind("{$prefix}.{$event}", function () use ($pipes) {

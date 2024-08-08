@@ -3,8 +3,8 @@
 namespace Inmanturbo\Modelware\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Inmanturbo\Modelware\ModelwareServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

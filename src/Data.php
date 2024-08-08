@@ -2,7 +2,8 @@
 
 namespace Inmanturbo\Modelware;
 
-class Data {
+class Data
+{
     public function __construct(
         public mixed $event,
         public ?object $model = null,

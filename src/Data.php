@@ -2,6 +2,9 @@
 
 namespace Inmanturbo\Modelware;
 
+use AllowDynamicProperties;
+
+#[AllowDynamicProperties]
 class Data {
     public function __construct(
         public mixed $event,

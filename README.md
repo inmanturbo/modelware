@@ -45,7 +45,7 @@ This package will send the following data object through your custom pipeline:
 
 ```php
 $data = app(Data::class, [
-    'event' => $event,
+    'event' => $events,
     'model' => $payload[0],
     'payload' => $payload,
 ]);

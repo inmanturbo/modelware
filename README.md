@@ -20,7 +20,7 @@ Add modelware in the boot method of a service provider
 ```php
 use Inmanturbo\Modelware\Facades\Modelware;
 
-Modelware::add(('eloquent.updating*', [
+Modelware::add('eloquent.updating*', [
     EnsureModelShouldBeSaved::class,
     ValidateAttributes::class,
     FillModel::class,

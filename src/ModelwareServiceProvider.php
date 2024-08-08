@@ -2,7 +2,6 @@
 
 namespace Inmanturbo\Modelware;
 
-use Inmanturbo\Modelware\Commands\ModelwareCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -16,8 +15,6 @@ class ModelwareServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('modelware')
-            ->hasConfigFile()
-            ->hasCommand(ModelwareCommand::class);
+            ->name('modelware');
     }
 }

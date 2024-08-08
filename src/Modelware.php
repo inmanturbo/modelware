@@ -20,12 +20,11 @@ class Modelware {
 
     protected static function eventPipeline(string $event, array $payload, $events, string $prefix): bool
     {
-        $data = (object) [
-            'payload' => $payload,
-            'event' => $events,
+        $data = app(Data::class, [
+            'event' => $event,
             'model' => $payload[0],
-            'halt' => false,
-        ];
+            'payload' => $payload,
+        ]);
 
         return Pipeline::send($data)
             ->through(app("{$prefix}.{$event}")->toArray())

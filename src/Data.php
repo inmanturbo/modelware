@@ -5,7 +5,8 @@ namespace Inmanturbo\Modelware;
 use AllowDynamicProperties;
 
 #[AllowDynamicProperties]
-class Data {
+class Data
+{
     public function __construct(
         public mixed $event,
         public ?object $model = null,

@@ -18,10 +18,10 @@ class Modelware
         });
     }
 
-    protected static function eventPipeline(string $event, array $payload, $events, string $prefix): bool
+    protected static function eventPipeline(string $event, array $payload, $events, string $prefix)
     {
         $data = app(Data::class, [
-            'event' => $event,
+            'event' => $events,
             'model' => $payload[0],
             'payload' => $payload,
         ]);

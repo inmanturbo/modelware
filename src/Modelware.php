@@ -13,9 +13,14 @@ class Modelware
             return collect($pipes)->map(fn ($pipe) => app($pipe));
         });
 
-        Event::listen($event, function (string $events, array $payload) use ($event, $prefix) {
-            return $this->eventPipeline($event, $payload, $events, $prefix);
-        });
+        match (true) {
+            str()->of($event)->contains('*') => Event::listen($event, function (string $events, array $payload) use ($event, $prefix) {
+                return $this->eventPipeline($event, $payload, $events, $prefix);
+            }),
+            default => Event::listen($event, function (...$payload) use ($event, $prefix) {
+                return $this->eventPipeline($event, $payload, $event, $prefix);
+            }),
+        };
     }
 
     protected static function eventPipeline(string $event, array $payload, $events, string $prefix)

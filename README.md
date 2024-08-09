@@ -20,14 +20,14 @@ Add modelware in the boot method of a service provider
 ```php
 use Inmanturbo\Modelware\Facades\Modelware;
 
-Modelware::add(('eloquent.updating*', [
+Modelware::add('eloquent.updating*', [
     EnsureModelShouldBeSaved::class,
     ValidateAttributes::class,
     FillModel::class,
 ], prefix: 'modelware'); // modelware is the default
 ```
 
-This package sends the event data through pilelines (similiar to middleware), which iterate through collections of invokable classes, these collections are bound into and resolved from the service container using the following syntax:
+This package sends the event data through [pipelines](https://laravel.com/docs/11.x/helpers#pipeline) (similiar to middleware), which iterate through collections of invokable classes, these collections are bound into and resolved from the service container using the following syntax:
 
 ```php
     app()->bind("{$prefix}.{$event}", function () use ($pipes) {

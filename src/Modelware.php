@@ -54,6 +54,6 @@ class Modelware
             return true;
         }
 
-        throw new \InvalidArgumentException('The given argument is neither a Closure nor an invokable class string.');
+        return false;
     }
 }

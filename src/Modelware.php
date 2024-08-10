@@ -2,15 +2,17 @@
 
 namespace Inmanturbo\Modelware;
 
+use Closure;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Pipeline;
+use ReflectionFunction;
 
 class Modelware
 {
     public function add(string $event, array $pipes, string $prefix = 'modelware'): void
     {
         app()->bind("{$prefix}.{$event}", function () use ($pipes) {
-            return collect($pipes)->map(fn ($pipe) => app($pipe));
+            return collect($pipes)->map(fn ($pipe) => $this->isInvokableClass($pipe) ? app($pipe) : $pipe);
         });
 
         match (true) {
@@ -34,5 +36,24 @@ class Modelware
         return Pipeline::send($data)
             ->through(app("{$prefix}.{$event}")->toArray())
             ->then(fn ($data) => ! $data->halt);
+    }
+
+    protected function isInvokableClass($closure): bool
+    {
+        if ($closure instanceof Closure) {
+            $reflection = new ReflectionFunction($closure);
+
+            if ($reflection->isClosure()) {
+                $object = $reflection->getClosureThis();
+
+                return is_object($object) && method_exists($object, '__invoke');
+            }
+
+            return false;
+        } elseif (is_string($closure) && class_exists($closure) && method_exists($closure, '__invoke')) {
+            return true;
+        }
+
+        throw new \InvalidArgumentException('The given argument is neither a Closure nor an invokable class string.');
     }
 }

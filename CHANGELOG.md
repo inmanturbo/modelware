@@ -2,6 +2,10 @@
 
 All notable changes to `modelware` will be documented in this file.
 
+## v1.0.3 - 2024-08-10
+
+**Full Changelog**: https://github.com/inmanturbo/modelware/compare/v1.0.2...v1.0.3
+
 ## v1.0.2 - 2024-08-10
 
 Allow passing anonymous functions in additions to invokable class.
